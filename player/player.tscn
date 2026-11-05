@@ -5,12 +5,16 @@
 [ext_resource type="Script" uid="uid://d3nwix0epq3wu" path="res://player/states/run.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://bllqg1yq63alw" path="res://player/states/jump.gd" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://b5ffjqpt2khqb" path="res://player/states/fail.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://daqv3i3jejl2x" path="res://player/states/crouch.gd" id="6_g6k8r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5bdik"]
 size = Vector2(18, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0mo0"]
-size = Vector2(16, 45)
+size = Vector2(17, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(18, 25.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=648462140]
 script = ExtResource("1_oul6g")
@@ -33,13 +37,25 @@ script = ExtResource("4_qjkh3")
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
 
+[node name="Crouch" type="Node" parent="States" unique_id=2067887183]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=303122019]
+unique_name_in_owner = true
 position = Vector2(0, -24)
 texture = SubResource("PlaceholderTexture2D_5bdik")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878541569]
-position = Vector2(0, -22.5)
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=878541569]
+unique_name_in_owner = true
+position = Vector2(0.5, -22.5)
 shape = SubResource("RectangleShape2D_b0mo0")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=1067296881]
+unique_name_in_owner = true
+position = Vector2(0, -12.75)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
 
 [node name="Label" type="Label" parent="." unique_id=1393442878]
 offset_left = -48.0
@@ -50,3 +66,8 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 9
 text = "label"
 horizontal_alignment = 1
+
+[node name="OneWayPlatformRayCast" type="RayCast2D" parent="." unique_id=952099475]
+unique_name_in_owner = true
+target_position = Vector2(0, 4)
+collision_mask = 2

@@ -1,6 +1,15 @@
 class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP = preload("uid://bjvbang82dbmi")
+
+#region /// 初始变量
+@onready var collision_stand: CollisionShape2D = %CollisionStand
+@onready var collision_crouch: CollisionShape2D = %CollisionCrouch
+@onready var sprite: Sprite2D = %Sprite2D
+@onready var one_way_platform_ray_cast: RayCast2D = %OneWayPlatformRayCast
+
+#endregion
+
 #region /// 导出变量
 @export var move_speed: float = 150
 #endregion

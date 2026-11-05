@@ -9,7 +9,7 @@ var next_state: PlayerState
 @onready var run: PlayerStateRun = %Run
 @onready var jump: PlayerStateJump = %Jump
 @onready var fail: PlayerStateFail = %Fail
-
+@onready var crouch: PlayerStateCrouch = %Crouch
 #endregion
 
 func init() -> void:
@@ -26,7 +26,6 @@ func exit() -> void:
 
 
 func handle_input(_event: InputEvent) -> PlayerState:
-	print("handle_input,", name)
 	return next_state
 
 func process(_delta: float) -> PlayerState:
