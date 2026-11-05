@@ -10,11 +10,11 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.animation_player.play("run")
 	print("enter,", name)
 	pass
 
 func exit() -> void:
-	print("exit,", name)
 	pass
 
 
