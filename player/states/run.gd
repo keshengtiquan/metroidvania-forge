@@ -6,12 +6,10 @@ class_name PlayerStateRun extends PlayerState
 #endregion
 
 func init() -> void:
-	print("init,", name)
 	pass
 
 func enter() -> void:
 	player.animation_player.play("run")
-	print("enter,", name)
 	pass
 
 func exit() -> void:

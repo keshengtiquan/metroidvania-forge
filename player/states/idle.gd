@@ -4,7 +4,6 @@ class_name PlayerStateIdle extends PlayerState
 #endregion
 
 func init() -> void:
-	print("init,", name)
 	pass
 
 func enter() -> void:
@@ -12,7 +11,6 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	print("exit,", name)
 	pass
 
 
