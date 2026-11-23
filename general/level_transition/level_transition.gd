@@ -21,6 +21,7 @@ enum SIDE {LEFT, RIGHT, TOP, BOTTOM}
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	apply_area_settings()
 	SceneManager.new_scene_ready.connect(_on_new_scene_ready)
 	SceneManager.load_scene_finished.connect(_on_load_scene_finished)
 	
@@ -35,7 +36,6 @@ func _on_new_scene_ready(target_name: String, offset: Vector2) -> void:
 	if target_name == name:
 		var player : Node = get_tree().get_first_node_in_group("Player")
 		player.global_position = global_position + offset
-		print("player", player.global_position)
 		
 	pass
 
@@ -84,7 +84,6 @@ func get_offset(player: Node2D) -> Vector2:
 			offset.y = -2
 		else:
 			offset.y = 48
-	print("offset",offset)
 	
 	return offset
 

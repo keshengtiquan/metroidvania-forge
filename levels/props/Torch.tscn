@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3c1xq1cvkdkd"]
 
 [ext_resource type="Texture2D" uid="uid://j0wibshqx3kx" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="1_7yq1y"]
+[ext_resource type="Script" uid="uid://5nwgpdrd1041" path="res://general/scripts/light_flicker.gd" id="2_dok03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dok03"]
 atlas = ExtResource("1_7yq1y")
@@ -45,8 +46,56 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_7yq1y"]
+offsets = PackedFloat32Array(0, 0.40944883, 0.79527557, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.73273736, 0.7762136, 0.047788132, 1, 0.4605409, 0.20692623, 0.05056439, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dok03"]
+gradient = SubResource("Gradient_7yq1y")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5bdik"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_dok03"]
+offsets = PackedFloat32Array(0, 0.32380953, 0.62857145, 0.9873016)
+colors = PackedColorArray(0.9137255, 1, 0.42352942, 0.9843137, 0.9938177, 1, 0, 0.98625135, 1, 0.6297373, 0.3991601, 0.9891441, 0.5529412, 0.078431375, 0, 0.02745098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e0xyg"]
+gradient = SubResource("Gradient_dok03")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0mo0"]
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_e0xyg")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+
 [node name="Torch" type="AnimatedSprite2D" unique_id=1952052552]
 sprite_frames = SubResource("SpriteFrames_b0mo0")
 autoplay = "default"
 frame_progress = 0.92205125
 offset = Vector2(0, -32)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1784775551]
+position = Vector2(0, -36)
+energy = 0.5
+texture = SubResource("GradientTexture2D_dok03")
+script = ExtResource("2_dok03")
+flicker_frequency = 0.5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=754772201]
+material = SubResource("CanvasItemMaterial_5bdik")
+position = Vector2(0, -36)
+amount = 3
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_b0mo0")

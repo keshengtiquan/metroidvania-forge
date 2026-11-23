@@ -13,15 +13,12 @@ var next_state: PlayerState
 #endregion
 
 func init() -> void:
-	print("init,", name)
 	pass
 
 func enter() -> void:
-	print("enter,", name)
 	pass
 
 func exit() -> void:
-	print("exit,", name)
 	pass
 
 

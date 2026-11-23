@@ -17,4 +17,4 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=464589200]
 position = Vector2(16, -16)
 shape = SubResource("RectangleShape2D_b0mo0")
-debug_color = Color(0.82925856, 0.33161092, 0.15505412, 0.41960785)
+debug_color = Color(0.08414942, 0.9121282, 0.20295753, 0.41960785)

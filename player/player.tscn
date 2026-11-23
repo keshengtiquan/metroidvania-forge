@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://b5ffjqpt2khqb" path="res://player/states/fail.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://daqv3i3jejl2x" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="9_8t03j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -108,7 +110,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0xyg"]
 size = Vector2(20, 3)
 
+[sub_resource type="Gradient" id="Gradient_boad6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b0mo0"]
+gradient = SubResource("Gradient_boad6")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=648462140 groups=["Player"]]
+z_index = 5
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_oul6g")
@@ -155,6 +169,7 @@ shape = SubResource("CapsuleShape2D_rgyib")
 disabled = true
 
 [node name="Label" type="Label" parent="." unique_id=1393442878]
+visible = false
 offset_left = -48.0
 offset_top = -73.0
 offset_right = 53.0
@@ -179,4 +194,20 @@ max_results = 12
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1744225126]
+process_mode = 3
 position = Vector2(1, -39)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1802314810]
+position = Vector2(0, -24)
+color = Color(0.973509, 0.9246491, 0.5123637, 1)
+energy = 0.43
+texture = SubResource("GradientTexture2D_b0mo0")
+
+[node name="InputHints" type="Node2D" parent="." unique_id=1398721819]
+position = Vector2(2, -65)
+script = ExtResource("8_hg6s5")
+
+[node name="Sprite2D" type="Sprite2D" parent="InputHints" unique_id=1270882148]
+position = Vector2(-2, 0)
+texture = ExtResource("9_8t03j")
+hframes = 16
