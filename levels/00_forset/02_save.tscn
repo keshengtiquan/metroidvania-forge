@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dncm1bg2vgv7o" path="res://general/scripts/level_bounds.gd" id="4_fvwbe"]
 [ext_resource type="PackedScene" uid="uid://b5h7m6ap8g7s2" path="res://general/save_point/save_point.tscn" id="5_ob56p"]
 [ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="6_ob56p"]
+[ext_resource type="Script" uid="uid://ssv3hkbdi5mj" path="res://music/music_auto_trigger.gd" id="7_dhnhs"]
 
 [node name="02_save" type="Node2D" unique_id=1872932272]
 metadata/_edit_horizontal_guides_ = [-93.78978]
@@ -46,3 +47,7 @@ position = Vector2(240.83597, 199.22012)
 
 [node name="PlayerSpawn" parent="." unique_id=609117158 instance=ExtResource("6_ob56p")]
 position = Vector2(36.666664, 158)
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=1998658529]
+script = ExtResource("7_dhnhs")
+metadata/_custom_type_script = "uid://ssv3hkbdi5mj"

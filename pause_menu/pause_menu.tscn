@@ -106,6 +106,7 @@ horizontal_alignment = 2
 
 [node name="PauseScreen" type="Control" parent="Control" unique_id=872345070]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,7 +179,7 @@ entrances_right = Array[float]([2.0])
 entrances_left = Array[float]([2.0])
 
 [node name="MapNode5" parent="Control/PauseScreen/Map" unique_id=35686810 instance=ExtResource("2_rd7dy")]
-modulate = Color(0.9208969, 0.12937115, 0.51666147, 1)
+modulate = Color(0.5176471, 0.36078432, 0.92941177, 1)
 layout_mode = 1
 offset_left = 68.0
 offset_top = 8.0
@@ -187,6 +188,27 @@ offset_bottom = 27.0
 linked_scene = "uid://b52frq03j0y33"
 entrances_right = Array[float]([2.6, 8.2, 13.799999])
 entrances_left = Array[float]([2.6])
+
+[node name="MapNode6" parent="Control/PauseScreen/Map" unique_id=1165376494 instance=ExtResource("2_rd7dy")]
+modulate = Color(0.5176471, 0.36078432, 0.92941177, 1)
+layout_mode = 1
+offset_left = 95.0
+offset_top = 8.0
+offset_right = 107.0
+offset_bottom = 15.0
+linked_scene = "uid://54oomfcuobl1"
+entrances_top = Array[float]([7.0])
+entrances_left = Array[float]([2.0])
+
+[node name="MapNode7" parent="Control/PauseScreen/Map" unique_id=146782665 instance=ExtResource("2_rd7dy")]
+modulate = Color(0.5176471, 0.36078432, 0.92941177, 1)
+layout_mode = 1
+offset_left = 95.0
+offset_right = 143.0
+offset_bottom = 7.0
+linked_scene = "uid://baqoujoam0ibr"
+entrances_bottom = Array[float]([7.2])
+entrances_left = Array[float]([2.0])
 
 [node name="PlayerIndictor" type="Control" parent="Control/PauseScreen/Map" unique_id=504445445]
 unique_name_in_owner = true
@@ -223,7 +245,6 @@ text = "System"
 
 [node name="System" type="Control" parent="Control" unique_id=458124544]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -271,7 +292,7 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Music"
 
-[node name="MusicHSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer2" unique_id=853247328]
+[node name="MusicSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer2" unique_id=853247328]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -287,7 +308,7 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "SFX"
 
-[node name="SFXHSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer3" unique_id=501531433]
+[node name="SFXSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer3" unique_id=501531433]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -303,7 +324,7 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "UI"
 
-[node name="UIHSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer4" unique_id=1941073365]
+[node name="UISlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer4" unique_id=1941073365]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -4,9 +4,10 @@ class_name PauseMenu extends CanvasLayer
 @onready var system_menu_button: Button = %SystemMenuButton
 @onready var back_to_map_button: Button = %BackToMapButton
 @onready var back_to_title_button: Button = %BackToTitleButton
-@onready var music_h_slider: HSlider = %MusicHSlider
-@onready var sfxh_slider: HSlider = %SFXHSlider
-@onready var uih_slider: HSlider = %UIHSlider
+@onready var music_slider: HSlider = %MusicSlider
+@onready var sfx_slider: HSlider = %SFXSlider
+@onready var ui_slider: HSlider = %UISlider
+
 
 var player: Player 
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	show_pause_screen()
 	system_menu_button.pressed.connect(show_system_menu)
 	setup_system_menu()
+	Audio.setup_button_audio(self) 
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -38,6 +40,14 @@ func show_system_menu() -> void:
 	pass
 
 func setup_system_menu() -> void:
+	music_slider.value = AudioServer.get_bus_volume_linear(2)
+	sfx_slider.value = AudioServer.get_bus_volume_linear(3)
+	ui_slider.value = AudioServer.get_bus_volume_linear(4)
+	
+	music_slider.value_changed.connect(_on_music_slider_change)
+	sfx_slider.value_changed.connect(_on_sfx_slider_change)
+	ui_slider.value_changed.connect(_on_ui_slider_change)
+	
 	back_to_map_button.pressed.connect(show_pause_screen)
 	back_to_title_button.pressed.connect(_on_back_to_title_pressed)
 	pass
@@ -47,4 +57,22 @@ func _on_back_to_title_pressed() -> void:
 	get_tree().paused = false
 	Messages.back_to_title_screen.emit()
 	queue_free()
+	pass
+
+func _on_music_slider_change(v: float) ->void:
+	AudioServer.set_bus_volume_linear(2, v)
+	Audio.ui_focus_change()
+	SaveManager.save_configuration()
+	pass
+
+func _on_sfx_slider_change(v: float) ->void:
+	AudioServer.set_bus_volume_linear(3, v)
+	Audio.ui_focus_change()
+	SaveManager.save_configuration()
+	pass
+
+func _on_ui_slider_change(v: float) ->void:
+	AudioServer.set_bus_volume_linear(4, v)
+	Audio.ui_focus_change()
+	SaveManager.save_configuration()
 	pass

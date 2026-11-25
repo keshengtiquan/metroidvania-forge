@@ -58,6 +58,7 @@ target_area_name = "LevelTransition2"
 position = Vector2(416, 224)
 size = 3
 location = 1
+target_level = "uid://54oomfcuobl1"
 
 [node name="LevelTransition3" parent="." unique_id=1422328247 instance=ExtResource("5_usgal")]
 position = Vector2(416, 448)
